@@ -5,14 +5,15 @@ import torch
 from torchvision.transforms import transforms
 import pygame
 import mediapipe as mp
-import numpy as np  # Added for fallback frame
+import numpy as np
+import os
 
 # Adjusted paths: '../' moves up from api/ to the root directory
 app = Flask(__name__, template_folder='../templates', static_folder='../static')
 
 # Initialize pygame mixer for playing sounds
 pygame.mixer.init()
-# Initialize MediaPipe Hands model
+# Initialize MediaPipe Hands model (will fail if mediapipe is not installed)
 mp_hands = mp.solutions.hands.Hands(static_image_mode=False, max_num_hands=2, min_detection_confidence=0.5, min_tracking_confidence=0.5)
 
 # Define the transformations for preprocessing
@@ -23,8 +24,8 @@ transform = transforms.Compose([
     transforms.Normalize(mean=[0.485, 0.456, 0.406], std=[0.229, 0.224, 0.225])
 ])
 
-# Load the PyTorch model from the root directory
-model = torch.load("C:/Users/Ashish/all/Downloads/display/display/classical2.pth", map_location=torch.device('cpu'), weights_only=False)
+# Load the PyTorch model from the root directory (relative path)
+model = torch.load("../classical2.pth", map_location=torch.device('cpu'), weights_only=False)
 model.eval()
 
 # Define the class labels and corresponding Nepali labels
@@ -52,12 +53,12 @@ current_prediction = {'label': '', 'confidence': '', 'sentence': '', 'completed_
 detection_enabled = False
 
 def generate_frames():
-    # Placeholder for Vercel - Load a static image from the root's static folder
+    # Placeholder for Render - Load a static image from the root's static folder
     frame = cv2.imread("../static/placeholder.jpg")  # Ensure this file exists in static/
     if frame is None:
         # Fallback if image not found
         frame = np.zeros((720, 1280, 3), dtype=np.uint8)  # Black 1280x720 image
-        cv2.putText(frame, "No webcam on Vercel", (50, 360), cv2.FONT_HERSHEY_SIMPLEX, 1, (255, 255, 255), 2)
+        cv2.putText(frame, "No webcam on Render", (50, 360), cv2.FONT_HERSHEY_SIMPLEX, 1, (255, 255, 255), 2)
     ret, buffer = cv2.imencode('.jpg', frame)
     frame = buffer.tobytes()
     yield (b'--frame\r\n'
@@ -120,4 +121,5 @@ def video_feed():
     return Response(generate_frames(), mimetype='multipart/x-mixed-replace; boundary=frame')
 
 if __name__ == "__main__":
-    app.run(debug=False)
+    port = int(os.getenv("PORT", 8000))  # Use PORT from env, default to 8000
+    app.run(debug=False, host="0.0.0.0", port=port)
