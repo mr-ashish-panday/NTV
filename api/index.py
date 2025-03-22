@@ -7,14 +7,15 @@ import pygame
 import mediapipe as mp
 import numpy as np
 import os
+import requests
 
 # Adjusted paths: '../' moves up from api/ to the root directory
 app = Flask(__name__, template_folder='../templates', static_folder='../static')
 
 # Initialize pygame mixer for playing sounds
 pygame.mixer.init()
-# Initialize MediaPipe Hands model
-mp_hands = mp.solutions.hands.Hands(static_image_mode=False, max_num_hands=2, min_detection_confidence=0.5, min_tracking_confidence=0.5)
+# Initialize MediaPipe Hands model (commented out since mediapipe is disabled)
+# mp_hands = mp.solutions.hands.Hands(static_image_mode=False, max_num_hands=2, min_detection_confidence=0.5, min_tracking_confidence=0.5)
 
 # Define the transformations for preprocessing
 transform = transforms.Compose([
@@ -24,8 +25,20 @@ transform = transforms.Compose([
     transforms.Normalize(mean=[0.485, 0.456, 0.406], std=[0.229, 0.224, 0.225])
 ])
 
-# Load the PyTorch model from the root directory (relative path)
-model = torch.load("../classical2.pth", map_location=torch.device('cpu'), weights_only=False)
+# Download the model at runtime to reduce memory usage
+model_path = "classical2.pth"
+if not os.path.exists(model_path):
+    url = "https://drive.google.com/uc?export=download&id=1Qets_7ihMvX2bKfbpM459kQB57X6nUGd"
+    print("Downloading model...")
+    response = requests.get(url, stream=True)
+    with open(model_path, "wb") as f:
+        for chunk in response.iter_content(chunk_size=8192):
+            if chunk:
+                f.write(chunk)
+    print("Model downloaded.")
+
+# Load the PyTorch model
+model = torch.load(model_path, map_location=torch.device('cpu'), weights_only=False)
 model.eval()
 
 # Define the class labels and corresponding Nepali labels
@@ -53,12 +66,12 @@ current_prediction = {'label': '', 'confidence': '', 'sentence': '', 'completed_
 detection_enabled = False
 
 def generate_frames():
-    # Placeholder for Render - Load a static image from the root's static folder
+    # Placeholder for Vercel - Load a static image from the root's static folder
     frame = cv2.imread("../static/placeholder.jpg")  # Ensure this file exists in static/
     if frame is None:
         # Fallback if image not found
         frame = np.zeros((720, 1280, 3), dtype=np.uint8)  # Black 1280x720 image
-        cv2.putText(frame, "No webcam on Render", (50, 360), cv2.FONT_HERSHEY_SIMPLEX, 1, (255, 255, 255), 2)
+        cv2.putText(frame, "No webcam on Vercel", (50, 360), cv2.FONT_HERSHEY_SIMPLEX, 1, (255, 255, 255), 2)
     ret, buffer = cv2.imencode('.jpg', frame)
     frame = buffer.tobytes()
     yield (b'--frame\r\n'
