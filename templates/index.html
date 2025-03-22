@@ -1,0 +1,89 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Nepali Sign Language</title>
+    <link rel="stylesheet" href="{{url_for('static',filename='css/style.css')}}">
+    <link rel="icon" href="{{url_for('static', filename='images/logo.png')}}">
+</head>
+<body>
+    <header class="header">
+        <a href="{{url_for('home')}}">
+            <img src="{{url_for('static',filename='images/logo2.png')}}" alt="">
+        </a>
+        
+        <!-- <p>Fispan</p> -->
+        <nav class="nav">
+            <ul>
+                <li><a href="{{url_for('home')}}" class="active">Home</a></li>
+                <li><a href="{{url_for('view')}}">View</a></li>
+                <li><a href="{{url_for('learn')}}">Learn</a></li>
+                <li><a href="{{url_for('team')}}">Team</a></li>
+            </ul>
+        </nav>
+    </header>
+    <section class="banner">
+        <div class="banner-content">
+            <div class="img1">
+                <img src="{{url_for('static', filename='images/img2.webp')}}" alt="">
+            </div>
+            <div class="logo"><p>FISPAN</p></div>
+            <!-- <div class="logo"><img src="{{url_for('static', filename='images/logo2.png')}}" alt=""></div> -->
+            <h1>Nepali Sign Language</h1>
+            <p>We believe that Nepali Sign Language should be accessible to everyone.</p>
+            <div class="img2">
+                <img src="{{url_for('static', filename='images/img1.webp')}}" alt="">
+            </div>
+            <div class="button">
+                <a href="{{url_for('view')}}">Explore the language</a><br>
+                <span class="learn-btn"><a href="{{url_for('learn')}}">Learn Sign <i class="material-icons">arrow_circle_right</i></a></span>
+            </div>
+        </div>
+    </section>
+    <section class="links">
+        <div class="sub-links">
+            <div class="card">
+                <div class="circle"></div>
+                <h3>Sign Language Detection</h3>
+                <p>Check whether the signs are correct or not.</p>
+                <a href="{{url_for('view')}}">Check</a>
+            </div>
+            <div class="card1">
+                <div class="circle"></div>
+                <h3>Learn Sign Language</h3>
+                <p>Take learning Nepali Sign Language into your own hands.</p>
+                <a href="{{url_for('learn')}}">Learn</a>
+            </div>
+        </div>
+    </section>
+    <section class="learning">
+        <h1>Here's what you can learn here</h1>
+        <div class="learning-list">
+            <div class="lesson">
+                <i class="material-icons ic">sign_language</i>
+                <h4>Consonant Letters</h4>
+                <p>Lorem ipsum dolor sit amet consectetur adipisicing elit asperiores excepturi nobis expedita quas distinctio accusantium corporis sed quasi. Enim in officiis assumenda veritatis!</p>
+                <a href="">View <i class="material-icons">east</i></a>
+            </div>
+            <div class="lesson">
+                <!-- <i class="material-icons">pan_tool</i> -->
+                <i class="material-icons ic">front_hand</i>
+                <h4>Numbers</h4>
+                <p>Lorem ipsum dolor sit amet consectetur adipisicing elit asperiores excepturi nobis expedita quas distinctio accusantium corporis sed quasi. Enim in officiis assumenda veritatis!</p>
+                <a href="">View <i class="material-icons">east</i></a>
+            </div>
+            <div class="lesson">
+                <!-- <i class="material-icons">pan_tool_alt</i> -->
+                <i class="material-icons ic">pan_tool</i>
+                <h4>Simple Conversation</h4>
+                <p>Lorem ipsum dolor sit amet consectetur adipisicing elit asperiores excepturi nobis expedita quas distinctio accusantium corporis sed quasi. Enim in officiis assumenda veritatis!</p>
+                <a href="">View <i class="material-icons">east</i></a>
+            </div>
+        </div>
+    </section>
+    <footer>
+        <p>© 2023 FISPAN</p>
+    </footer>
+</body>
+</html>

@@ -1,0 +1,72 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Nepali Sign Language</title>
+    <link rel="stylesheet" href="{{url_for('static', filename='css/style.css')}}">
+    <link rel="icon" href="{{url_for('static', filename='images/logo.png')}}">
+</head>
+<body>
+    <header class="header">
+        <img src="{{url_for('static',filename='images/logo2.png')}}" alt="">
+        <!-- <p>Fispan</p> -->
+        <nav class="nav">
+            <ul>
+                <li><a href="{{url_for('home')}}">Home</a></li>
+                <li><a href="{{url_for('view')}}">View</a></li>
+                <li><a href="{{url_for('learn')}}">Learn</a></li>
+                <li><a href="{{url_for('team')}}" class="active">Team</a></li>
+            </ul>
+        </nav>
+    </header>
+    <section class="team">
+        <h1>Our Team</h1>
+        <div class="team-info">
+            <div class="member">
+                <div class="card">
+                    <div class="card-image">
+                      <img src="{{url_for('static', filename='images/team/750313.jpg')}}" alt="profile one">
+                    </div>
+                    <div class="details">
+                        <h3>Dipen Boyaju</h3>
+                    </div>
+                </div>
+            </div>
+            <div class="member">
+                <div class="card">
+                    <div class="card-image">
+                      <img src="{{url_for('static', filename='images/team/750315.jpg')}}" alt="profile one">
+                    </div>
+                    <div class="details">
+                        <h3>Jatin Bhusal</h3>
+                    </div>
+                </div>
+            </div>
+            <div class="member">
+                <div class="card">
+                    <div class="card-image">
+                      <img src="{{url_for('static', filename='images/team/750318.jpg')}}" alt="profile one">
+                    </div>
+                    <div class="details">
+                        <h3>Nir Ratna Shakya</h3>
+                    </div>
+                </div>
+            </div>
+            <div class="member">
+                <div class="card">
+                    <div class="card-image">
+                      <img src="{{url_for('static', filename='images/team/750343.jpg')}}" alt="profile one">
+                    </div>
+                    <div class="details">
+                        <h3>Sonia Dhaubhadel</h3>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </section>
+    <footer>
+        <p>© 2023 FISPAN</p>
+    </footer>
+</body>
+</html>

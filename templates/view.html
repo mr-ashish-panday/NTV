@@ -1,0 +1,158 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Nepali Sign Language</title>
+    <link rel="stylesheet" href="{{url_for('static', filename='css/style.css')}}">
+    <link rel="icon" href="{{url_for('static', filename='images/logo.png')}}">
+</head>
+<body>
+    <header class="header">
+        <img src="{{url_for('static',filename='images/logo2.png')}}" alt="">
+        <!-- <p>Fispan</p> -->
+        <nav class="nav">
+            <ul>
+                <li><a href="{{url_for('home')}}">Home</a></li>
+                <li><a href="{{url_for('view')}}" class="active">View</a></li>
+                <li><a href="{{url_for('learn')}}">Learn</a></li>
+                <li><a href="{{url_for('team')}}">Team</a></li>
+            </ul>
+        </nav>
+    </header>
+    <section class="detection">
+        <div class="detection-content">
+            <div class="signs">
+                <h3>Signs Demo</h3>
+                <div class="sign-img">
+                    <!-- <video width="500px"  controls="controls" autoplay="autoplay">
+                        <source src="{{url_for('static', filename='video/letter/gha.mp4')}}" type="video/mp4" />
+                    </video> -->
+                    <img src="{{url_for('static', filename='images/Namaskaar.png')}}" alt="">
+                    <p>नमस्कार</p>
+                    <!-- <video width="500px"  controls="controls" autoplay="autoplay">
+                        <source src="{{url_for('static', filename='video/letter/ka.mp4')}}" type="video/mp4" />
+                    </video> -->
+                    <img src="{{url_for('static', filename='images/Aaja.png')}}" alt="">
+                    <p>आज</p>
+                    <!-- <video width="500px"  controls="controls" autoplay="autoplay">
+                        <source src="{{url_for('static', filename='video/letter/kha.mp4')}}" type="video/mp4" />
+                    </video> -->
+                    <img src="{{url_for('static', filename='images/Ma.png')}}" alt="">
+                    <p>म</p>
+                    <!-- <video width="500px"  controls="controls" autoplay="autoplay">
+                        <source src="{{url_for('static', filename='video/letter/gha.mp4')}}" type="video/mp4" />
+                    </video> -->
+                    <img src="{{url_for('static', filename='images/Ghar.png')}}" alt="">
+                    <p>घर</p>
+                    <!-- <video width="500px"  controls="controls" autoplay="autoplay">
+                        <source src="{{url_for('static', filename='video/letter/ka.mp4')}}" type="video/mp4" />
+                    </video> -->
+                    <img src="{{url_for('static', filename='images/Jaanchu.png')}}" alt="">
+                    <p>जान्छु</p>
+                    <!-- <video width="500px"  controls="controls" autoplay="autoplay">
+                        <source src="{{url_for('static', filename='video/letter/kha.mp4')}}" type="video/mp4" />
+                    </video> -->
+                    <img src="{{url_for('static', filename='images/Dhanyebaad.png')}}" alt="">
+                    <p>धन्यवाद</p>
+                </div>
+            </div>
+            <div class="main-view">
+                <div class="display_screen">
+                    <h3>Sign Screen</h3>
+                    <div class="button">
+                        <span class="start">
+                            <button onclick="startVideo()">Start</button>
+                        </span>
+                        <span class="stop">
+                            <button onclick="stopVideo()">Stop</button>
+                        </span>
+                    </div>
+                    <div class="sub-view">
+                        <div class="display">
+                            <img src="" alt="Video Feed">
+                        </div>
+                        <p><span class="title">Current Sentence :</span> <br><span id="prediction-sentence"></span></p>
+                        <p><span class="title">Previous Sentence :</span> <br><span id="completed-sentences"></span></p>
+                        <span class="clear">
+                            <button onclick="clearOutput()">Clear</button>
+                        </span>
+                    </div> 
+                </div>
+            </div>
+            <div class="status">
+                <h3>Status</h3>
+                <div class="status_info">
+                    <p><span class="title">Current Prediction:</span> <br><span id="prediction-label"></span></p>
+                    <p><span class="title">Confidence:</span> <br><span id="prediction-confidence"></span></p>
+                </div>
+            </div>
+        </div>
+    </section>
+    <footer>
+        <p>© 2023 FISPAN</p>
+    </footer>
+</body>
+
+<script src="https://ajax.googleapis.com/ajax/libs/jquery/3.5.1/jquery.min.js"></script>
+<script>
+    async function startVideo() {
+        const res = await fetch('/start');
+        const data = await res.json();
+        if (data.success) {
+            document.querySelector(".display img").src = "{{ url_for('video_feed') }}";
+        }
+    }
+
+    async function stopVideo() {
+        const res = await fetch('/stop');
+        const data = await res.json();
+        if (data.success) {
+            document.querySelector(".display img").src = "";
+        }
+    }
+
+    async function clearOutput() {
+        const res = await fetch('/clear');
+        const data = await res.json();
+        if (data.success) {
+            document.getElementById('output').innerHTML = ''; // Clear the output on the front end
+        }
+    }
+</script>
+<!-- <script>
+    function fetchPrediction() {
+        $.getJSON('/get_prediction', function(data) {
+            $('#prediction-label').text(data.label);
+            $('#prediction-confidence').text(data.confidence);
+            $('#prediction-sentence').text(data.sentence);
+            $('#completed-sentences').text(data.completed_sentences);
+        });
+    }
+
+    // Fetch the prediction data every second
+    setInterval(fetchPrediction, 1000);
+</script> -->
+<script>
+    function updateData() {
+        fetch('/get_data')
+            .then(response => response.json())
+            .then(data => {
+                document.getElementById('prediction-sentence').innerText = data.current;
+                document.getElementById('prediction-confidence').innerText = data.confidence;
+                document.getElementById('prediction-label').innerText = data.prediction_label;
+                document.getElementById('completed-sentences').innerText = data.completed.join('\n');
+                
+                // var lastPrediction = data.last_prediction;
+                // if (lastPrediction && lastPrediction !== lastPlayedGesture) {
+                //     playAudio(lastPrediction);
+                //     lastPlayedGesture = lastPrediction;
+                // }
+            });
+    }
+
+    document.addEventListener("DOMContentLoaded", function () {
+        setInterval(updateData, 1000); // Update every second
+    });
+</script>
+</html>

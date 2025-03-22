@@ -1,0 +1,8 @@
+# Ignore Python cache files and virtualenv/IDE directories
+__pycache__/
+*.pyc
+*.pyo
+*.pyd
+.idea/
+Lib/
+Scripts/

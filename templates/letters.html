@@ -1,0 +1,282 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Nepali Sign Language</title>
+    <link rel="stylesheet" href="{{url_for('static', filename='css/style.css')}}">
+    <link rel="icon" href="{{url_for('static', filename='images/logo.png')}}">
+    <link rel="icon" href="{{url_for('static', filename='images/logo.png')}}">
+</head>
+<body>
+    <header class="header">
+        <img src="{{url_for('static',filename='images/logo2.png')}}" alt="">
+        <!-- <p>Fispan</p> -->
+        <nav class="nav">
+            <ul>
+                <li><a href="{{url_for('home')}}">Home</a></li>
+                <li><a href="{{url_for('view')}}">View</a></li>
+                <li><a href="{{url_for('learn')}}" class="active">Learn</a></li>
+                <li><a href="{{url_for('team')}}">Team</a></li>
+            </ul>
+        </nav>
+    </header>
+    <section class="learn-letter">
+        <h1>Consonant Letters</h1>
+        <div class="letter-content">
+            <div class="letters">
+                <div class="items">
+                    <img src="{{url_for('static',filename='images/letter/ka.jpg')}}" alt="">
+                    <video width="500px" height="500px" controls="controls" autoplay>
+                        <source src="{{url_for('static', filename='video/letter/ka.mp4')}}" type="video/mp4" />
+                    </video>
+                    <h3>क [ka]</h3>
+                </div>
+                <div class="items">
+                    <img src="{{url_for('static',filename='images/letter/kha.jpg')}}" alt="">
+                    <video width="500px" height="500px" controls="controls" autoplay>
+                        <source src="{{url_for('static', filename='video/letter/kha.mp4')}}" type="video/mp4" />
+                    </video>
+                    <h3>ख [kha]</h3>
+                </div>
+                <div class="items">
+                    <img src="{{url_for('static',filename='images/letter/ga.jpg')}}" alt="">
+                    <video width="500px" height="500px" controls="controls" autoplay>
+                        <source src="{{url_for('static', filename='video/letter/ga.mp4')}}" type="video/mp4" />
+                    </video>
+                    <h3>ग [ga]</h3>
+                </div>
+                <div class="items">
+                    <img src="{{url_for('static',filename='images/letter/gha.jpg')}}" alt="">
+                    <video width="500px" height="500px" controls="controls" autoplay>
+                        <source src="{{url_for('static', filename='video/letter/gha.mp4')}}" type="video/mp4" />
+                    </video>
+                    <h3>घ [gha]</h3>
+                </div>
+                <div class="items">
+                    <img src="{{url_for('static',filename='images/letter/nga.jpg')}}" alt="">
+                    <video width="500px" height="500px" controls="controls" autoplay>
+                        <source src="{{url_for('static', filename='video/letter/nga.mp4')}}" type="video/mp4" />
+                    </video>
+                    <h3>ङ [nga]</h3>
+                </div>
+                <div class="items">
+                    <img src="{{url_for('static',filename='images/letter/cha.jpg')}}" alt="">
+                    <video width="500px" height="500px" controls="controls" autoplay>
+                        <source src="{{url_for('static', filename='video/letter/cha.mp4')}}" type="video/mp4" />
+                    </video>
+                    <h3>च[cha]</h3>
+                </div>
+                <div class="items">
+                    <img src="{{url_for('static',filename='images/letter/chha.jpg')}}" alt="">
+                    <video width="500px" height="500px" controls="controls" autoplay>
+                        <source src="{{url_for('static', filename='video/letter/chha.mp4')}}" type="video/mp4" />
+                    </video>
+                    <h3>छ [chha]</h3>
+                </div>
+                <div class="items">
+                    <img src="{{url_for('static',filename='images/letter/ja.jpg')}}" alt="">
+                    <video width="500px" height="500px" controls="controls" autoplay>
+                        <source src="{{url_for('static', filename='video/letter/ja.mp4')}}" type="video/mp4" />
+                    </video>
+                    <h3>ज [ja]</h3>
+                </div>
+                <div class="items">
+                    <img src="{{url_for('static',filename='images/letter/jha.jpg')}}" alt="">
+                    <video width="500px" height="500px" controls="controls" autoplay>
+                        <source src="{{url_for('static', filename='video/letter/jha.mp4')}}" type="video/mp4" />
+                    </video>
+                    <h3>झ [jha]</h3>
+                </div>
+                <div class="items">
+                    <img src="{{url_for('static',filename='images/letter/nya.jpg')}}" alt="">
+                    <video width="500px" height="500px" controls="controls" autoplay>
+                        <source src="{{url_for('static', filename='video/letter/nya.mp4')}}" type="video/mp4" />
+                    </video>
+                    <h3>ञ [nya]</h3>
+                </div>
+                <div class="items">
+                    <img src="{{url_for('static',filename='images/letter/ta.jpg')}}" alt="">
+                    <video width="500px" height="500px" controls="controls" autoplay>
+                        <source src="{{url_for('static', filename='video/letter/ta.mp4')}}" type="video/mp4" />
+                    </video>
+                    <h3>ट [ta]</h3>
+                </div>
+                <div class="items">
+                    <img src="{{url_for('static',filename='images/letter/thha.jpg')}}" alt="">
+                    <video width="500px" height="500px" controls="controls" autoplay>
+                        <source src="{{url_for('static', filename='video/letter/thha.mp4')}}" type="video/mp4" />
+                    </video>
+                    <h3>ठ [thha]</h3>
+                </div>
+                <div class="items">
+                    <img src="{{url_for('static',filename='images/letter/da.jpg')}}" alt="">
+                    <video width="500px" height="500px" controls="controls" autoplay>
+                        <source src="{{url_for('static', filename='video/letter/da.mp4')}}" type="video/mp4" />
+                    </video>
+                    <h3>ड [da]</h3>
+                </div>
+                <div class="items">
+                    <img src="{{url_for('static',filename='images/letter/dh.jpg')}}" alt="">
+                    <video width="500px" height="500px" controls="controls" autoplay>
+                        <source src="{{url_for('static', filename='video/letter/dh.mp4')}}" type="video/mp4" />
+                    </video>
+                    <h3>ढ [dha]</h3>
+                </div>
+                <div class="items">
+                    <img src="{{url_for('static',filename='images/letter/n.jpg')}}" alt="">
+                    <video width="500px" height="500px" controls="controls" autoplay>
+                        <source src="{{url_for('static', filename='video/letter/n.mp4')}}" type="video/mp4" />
+                    </video>
+                    <h3>ण [n]</h3>
+                </div>
+                <div class="items">
+                    <img src="{{url_for('static',filename='images/letter/t.jpg')}}" alt="">
+                    <video width="500px" height="500px" controls="controls" autoplay>
+                        <source src="{{url_for('static', filename='video/letter/t.mp4')}}" type="video/mp4" />
+                    </video>
+                    <h3>त [ta]</h3>
+                </div>
+                <div class="items">
+                    <img src="{{url_for('static',filename='images/letter/tha.jpg')}}" alt="">
+                    <video width="500px" height="500px" controls="controls" autoplay>
+                        <source src="{{url_for('static', filename='video/letter/tha.mp4')}}" type="video/mp4" />
+                    </video>
+                    <h3>थ [tha]</h3>
+                </div>
+                <div class="items">
+                    <img src="{{url_for('static',filename='images/letter/d.jpg')}}" alt="">
+                    <video width="500px" height="500px" controls="controls" autoplay>
+                        <source src="{{url_for('static', filename='video/letter/d.mp4')}}" type="video/mp4" />
+                    </video>
+                    <h3>द [da]</h3>
+                </div>
+                <div class="items">
+                    <img src="{{url_for('static',filename='images/letter/dha.jpg')}}" alt="">
+                    <video width="500px" height="500px" controls="controls" autoplay>
+                        <source src="{{url_for('static', filename='video/letter/dha.mp4')}}" type="video/mp4" />
+                    </video>
+                    <h3>ध [dha]</h3>
+                </div>
+                <div class="items">
+                    <img src="{{url_for('static',filename='images/letter/na.jpg')}}" alt="">
+                    <video width="500px" height="500px" controls="controls" autoplay>
+                        <source src="{{url_for('static', filename='video/letter/na.mp4')}}" type="video/mp4" />
+                    </video>
+                    <h3>न [na]</h3>
+                </div>
+                <div class="items">
+                    <img src="{{url_for('static',filename='images/letter/pa.jpg')}}" alt="">
+                    <video width="500px" height="500px" controls="controls" autoplay>
+                        <source src="{{url_for('static', filename='video/letter/pa.mp4')}}" type="video/mp4" />
+                    </video>
+                    <h3>प [pa]</h3>
+                </div>
+                <div class="items">
+                    <img src="{{url_for('static',filename='images/letter/fa.jpg')}}" alt="">
+                    <video width="500px" height="500px" controls="controls" autoplay>
+                        <source src="{{url_for('static', filename='video/letter/fa.mp4')}}" type="video/mp4" />
+                    </video>
+                    <h3>फ [fa]</h3>
+                </div>
+                <div class="items">
+                    <img src="{{url_for('static',filename='images/letter/ba.jpg')}}" alt="">
+                    <video width="500px" height="500px" controls="controls" autoplay>
+                        <source src="{{url_for('static', filename='video/letter/ba.mp4')}}" type="video/mp4" />
+                    </video>
+                    <h3>ब [ba]</h3>
+                </div>
+                <div class="items">
+                    <img src="{{url_for('static',filename='images/letter/bha.jpg')}}" alt="">
+                    <video width="500px" height="500px" controls="controls" autoplay>
+                        <source src="{{url_for('static', filename='video/letter/bha.mp4')}}" type="video/mp4" />
+                    </video>
+                    <h3>भ [bha]</h3>
+                </div>
+                <div class="items">
+                    <img src="{{url_for('static',filename='images/letter/ma.jpg')}}" alt="">
+                    <video width="500px" height="500px" controls="controls" autoplay>
+                        <source src="{{url_for('static', filename='video/letter/ma.mp4')}}" type="video/mp4" />
+                    </video>
+                    <h3>म [ma]</h3>
+                </div>
+                <div class="items">
+                    <img src="{{url_for('static',filename='images/letter/ya.jpg')}}" alt="">
+                    <video width="500px" height="500px" controls="controls" autoplay>
+                        <source src="{{url_for('static', filename='video/letter/ya.mp4')}}" type="video/mp4" />
+                    </video>
+                    <h3>य [ya]</h3>
+                </div>
+                <div class="items">
+                    <img src="{{url_for('static',filename='images/letter/ra.jpg')}}" alt="">
+                    <video width="500px" height="500px" controls="controls" autoplay>
+                        <source src="{{url_for('static', filename='video/letter/ra.mp4')}}" type="video/mp4" />
+                    </video>
+                    <h3>र [ra]</h3>
+                </div>
+                <div class="items">
+                    <img src="{{url_for('static',filename='images/letter/la.jpg')}}" alt="">
+                    <video width="500px" height="500px" controls="controls" autoplay>
+                        <source src="{{url_for('static', filename='video/letter/la.mp4')}}" type="video/mp4" />
+                    </video>
+                    <h3>ल [la]</h3>
+                </div>
+                <div class="items">
+                    <img src="{{url_for('static',filename='images/letter/wa.jpg')}}" alt="">
+                    <video width="500px" height="500px" controls="controls" autoplay>
+                        <source src="{{url_for('static', filename='video/letter/wa.mp4')}}" type="video/mp4" />
+                    </video>
+                    <h3>व [wa]</h3>
+                </div>
+                <div class="items">
+                    <img src="{{url_for('static',filename='images/letter/sha.jpg')}}" alt="">
+                    <video width="500px" height="500px" controls="controls" autoplay>
+                        <source src="{{url_for('static', filename='video/letter/sha.mp4')}}" type="video/mp4" />
+                    </video>
+                    <h3>श [sha]</h3>
+                </div>
+                <div class="items">
+                    <img src="{{url_for('static',filename='images/letter/shha.jpg')}}" alt="">
+                    <video width="500px" height="500px" controls="controls" autoplay>
+                        <source src="{{url_for('static', filename='video/letter/shha.mp4')}}" type="video/mp4" />
+                    </video>
+                    <h3>ष [shha]</h3>
+                </div><div class="items">
+                    <img src="{{url_for('static',filename='images/letter/sa.jpg')}}" alt="">
+                    <video width="500px" height="500px" controls="controls" autoplay>
+                        <source src="{{url_for('static', filename='video/letter/sa.mp4')}}" type="video/mp4" />
+                    </video>
+                    <h3>स [sa]</h3>
+                </div><div class="items">
+                    <img src="{{url_for('static',filename='images/letter/ha.jpg')}}" alt="">
+                    <video width="500px" height="500px" controls="controls" autoplay>
+                        <source src="{{url_for('static', filename='video/letter/ha.mp4')}}" type="video/mp4" />
+                    </video>
+                    <h3>ह [ha]</h3>
+                </div><div class="items">
+                    <img src="{{url_for('static',filename='images/letter/chhya.jpg')}}" alt="">
+                    <video width="500px" height="500px" controls="controls" autoplay>
+                        <source src="{{url_for('static', filename='video/letter/chhya.mp4')}}" type="video/mp4" />
+                    </video>
+                    <h3>क्ष [chhya]</h3>
+                </div><div class="items">
+                    <img src="{{url_for('static',filename='images/letter/tra.jpg')}}" alt="">
+                    <video width="500px" height="500px" controls="controls" autoplay>
+                        <source src="{{url_for('static', filename='video/letter/tra.mp4')}}" type="video/mp4" />
+                    </video>
+                    <h3>त्र [tra]</h3>
+                </div><div class="items">
+                    <img src="{{url_for('static',filename='images/letter/gya.jpg')}}" alt="">
+                    <video width="500px" height="500px" controls="controls" autoplay>
+                        <source src="{{url_for('static', filename='video/letter/gya.mp4')}}" type="video/mp4" />
+                    </video>
+                    <h3>ज्ञ [gya]</h3>
+                </div>
+            </div> 
+        </div>
+    </section>
+    <footer>
+        <p>© 2023 FISPAN</p>
+    </footer>
+</body>
+</html>

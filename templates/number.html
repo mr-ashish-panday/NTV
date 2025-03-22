@@ -1,0 +1,87 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Nepali Sign Language</title>
+    <link rel="stylesheet" href="{{url_for('static', filename='css/style.css')}}">
+    <link rel="icon" href="{{url_for('static', filename='images/logo.png')}}">
+    <link rel="icon" href="{{url_for('static', filename='images/logo.png')}}">
+</head>
+<body>
+    <header class="header">
+        <img src="{{url_for('static',filename='images/logo2.png')}}" alt="">
+        <!-- <p>Fispan</p> -->
+        <nav class="nav">
+            <ul>
+                <li><a href="{{url_for('home')}}">Home</a></li>
+                <li><a href="{{url_for('view')}}">View</a></li>
+                <li><a href="{{url_for('learn')}}" class="active">Learn</a></li>
+                <li><a href="{{url_for('team')}}">Team</a></li>
+            </ul>
+        </nav>
+    </header>
+    <section class="learn-letter">
+        <h1>Numbers</h1>
+        <div class="letter-content">
+            <div class="letters number">
+                <div class="items">
+                    <img src="{{url_for('static', filename='images/number/0.jpg')}}" alt="">
+                    <h3>० (0) | सुन्ना (sunnā)</h3>
+                </div>
+                <div class="items">
+                    <img src="{{url_for('static', filename='images/number/1.jpg')}}" alt="">
+                    <h3>१ (1) | एक (eka)</h3>
+                </div>
+                <div class="items">
+                    <img src="{{url_for('static', filename='images/number/2.jpg')}}" alt="">
+                    <h3>२ (2) | दुई (duī)</h3>
+                </div>
+                <div class="items">
+                    <img src="{{url_for('static', filename='images/number/3.jpg')}}" alt="">
+                    <h3>३ (3) | तीन (tīna)</h3>
+                </div>
+                <div class="items">
+                    <img src="{{url_for('static', filename='images/number/4.jpg')}}" alt="">
+                    <h3>४ (4) | चार (cāra)</h3>
+                </div>
+                <div class="items">
+                    <img src="{{url_for('static', filename='images/number/5.jpg')}}" alt="">
+                    <h3>५ (5) | पाँच (pā̃ca)</h3>
+                </div>
+                <div class="items">
+                    <img src="{{url_for('static', filename='images/number/6.jpg')}}" alt="">
+                    <h3>६ (6) | छ (cha)</h3>
+                </div>
+                <div class="items">
+                    <img src="{{url_for('static', filename='images/number/7.jpg')}}" alt="">
+                    <h3>७ (7) | सात (sāta)</h3>
+                </div>
+                <div class="items">
+                    <img src="{{url_for('static', filename='images/number/8.jpg')}}" alt="">
+                    <h3>८ (8) | आठ (āṭha)</h3>
+                </div>
+                <div class="items">
+                    <img src="{{url_for('static', filename='images/number/9.jpg')}}" alt="">
+                    <h3>९ (9) | नौ (nau)</h3>
+                </div>
+                <div class="items">
+                    <img src="{{url_for('static', filename='images/number/10.jpg')}}" alt="">
+                    <h3>१० (10) | दस (dasa)</h3>
+                </div>
+                <div class="items">
+                    <img src="{{url_for('static', filename='images/number/11.jpg')}}" alt="">
+                    <h3>११ (11) | एघार (Ēghāra)</h3>
+                </div>
+                <div class="items">
+                    <img src="{{url_for('static', filename='images/number/12.jpg')}}" alt="">
+                    <h3>१२ (12) | बाह्र (Bāhra)</h3>
+                </div>
+            </div>
+        </div>
+    </section>
+    <footer>
+        <p>© 2023 FISPAN</p>
+    </footer>
+</body>
+</html>
