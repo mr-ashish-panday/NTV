@@ -8,14 +8,15 @@ import mediapipe as mp
 import numpy as np
 import os
 import requests
+import gc
 
 # Adjusted paths: '../' moves up from api/ to the root directory
 app = Flask(__name__, template_folder='../templates', static_folder='../static')
 
 # Initialize pygame mixer for playing sounds
 pygame.mixer.init()
-# Initialize MediaPipe Hands model (commented out since mediapipe is disabled)
-# mp_hands = mp.solutions.hands.Hands(static_image_mode=False, max_num_hands=2, min_detection_confidence=0.5, min_tracking_confidence=0.5)
+# Initialize MediaPipe Hands model
+mp_hands = mp.solutions.hands.Hands(static_image_mode=False, max_num_hands=2, min_detection_confidence=0.5, min_tracking_confidence=0.5)
 
 # Define the transformations for preprocessing
 transform = transforms.Compose([
@@ -37,9 +38,14 @@ if not os.path.exists(model_path):
                 f.write(chunk)
     print("Model downloaded.")
 
-# Load the PyTorch model
-model = torch.load(model_path, map_location=torch.device('cpu'), weights_only=False)
-model.eval()
+# Load the PyTorch model with memory optimization
+with torch.no_grad():
+    model = torch.load(model_path, map_location=torch.device('cpu'), weights_only=False)
+    model.eval()
+
+# Clear memory after loading the model
+gc.collect()
+torch.cuda.empty_cache()  # Just in case, though we're on CPU
 
 # Define the class labels and corresponding Nepali labels
 labels = ["आज", "धन्यबाद", "घर", "जान्छु", "म", "नमस्कार"]
@@ -66,12 +72,12 @@ current_prediction = {'label': '', 'confidence': '', 'sentence': '', 'completed_
 detection_enabled = False
 
 def generate_frames():
-    # Placeholder for Vercel - Load a static image from the root's static folder
+    # Placeholder for Render - Load a static image from the root's static folder
     frame = cv2.imread("../static/placeholder.jpg")  # Ensure this file exists in static/
     if frame is None:
         # Fallback if image not found
         frame = np.zeros((720, 1280, 3), dtype=np.uint8)  # Black 1280x720 image
-        cv2.putText(frame, "No webcam on Vercel", (50, 360), cv2.FONT_HERSHEY_SIMPLEX, 1, (255, 255, 255), 2)
+        cv2.putText(frame, "No webcam on Render", (50, 360), cv2.FONT_HERSHEY_SIMPLEX, 1, (255, 255, 255), 2)
     ret, buffer = cv2.imencode('.jpg', frame)
     frame = buffer.tobytes()
     yield (b'--frame\r\n'
